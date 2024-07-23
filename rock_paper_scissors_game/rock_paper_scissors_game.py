@@ -5,14 +5,18 @@ def get_computer_choice():
     return random.choice(choices)
 
 def decide_winner(user_choice, computer_choice):
+    winning_cases = {
+        'rock': 'scissors',
+        'scissors': 'paper',
+        'paper': 'rock'
+    }
+
     if user_choice == computer_choice:
-        return "tie"
-    elif (user_choice == "rock" and computer_choice == "scissors") or \
-         (user_choice == "scissors" and computer_choice == "paper") or \
-         (user_choice == "paper" and computer_choice == "rock"):
-        return "win"
+        return 'tie'
+    elif winning_cases[user_choice] == computer_choice:
+        return 'win'
     else:
-        return "lose"
+        return 'lose'
 
 def show_result(user_choice, computer_choice, result):
     print(f"\nYou chose: {user_choice}")
@@ -29,7 +33,7 @@ def play_game():
     computer_score = 0
 
     while True:
-        user_choice = input("\nEnter rock, paper, or scissors (or 'quit' to exit): ").lower()
+        user_choice = input("\nEnter rock, paper, or scissors (or 'quit' to exit): ")
         if user_choice == 'quit':
             break
 
@@ -48,7 +52,7 @@ def play_game():
 
         print(f"\nScore: You {user_score} - Computer {computer_score}")
 
-        play_again = input("\nDo you want to play again? (yes/no): ").lower()
+        play_again = input("\nDo you want to play again? (yes/no): ")
         if play_again != 'yes':
             break
 
