@@ -1,28 +1,27 @@
 def calculator():
-    # Prompting user for input
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
+    try:
+        x = int(input("Enter the first number: "))
+        operation = input("Choose the operation (+, -, *, /): ")
+        y = int(input("Enter the second number: "))
 
-    operation = input("Choose an operator (+, -, *, /): ")
-
-    # Calculation based on the chosen operation
-    if operation == '+':
-        result = num1 + num2
-    elif operation == '-':
-        result = num1 - num2
-    elif operation == '*':
-        result = num1 * num2
-    elif operation == '/':
-        if num2 != 0:
-            result = num1 / num2
+        if operation == '+':
+            answer = x + y
+        elif operation == '-':
+            answer = x - y
+        elif operation == '*':
+            answer = x * y
+        elif operation == '/':
+            if y != 0:
+                answer = x / y
+            else:
+                answer = "Error! Division by zero."
         else:
-            return "Error, Division by zero."
-    else:
-        return "Invalid operation."
+            answer = "Invalid operation"
 
-    # Displaying the results 
-    return f"The result is: {result}"
+        print(f"The result is: {answer}")
 
-    # Calling the calculator function
-    print(calculator())
-  
+    except ValueError:
+        print("Invalid input. Please enter numeric values.")
+
+if __name__ == "__main__":
+    calculator()
